@@ -1,0 +1,25 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4rem;
+  height: 10vh;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.companyName {
+  font-family: Plus Jakarta Sans;
+  font-weight: 800;
+  color: #7e22ce;
+  font-size: 37.74px;
+}
+
+.actionsSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
