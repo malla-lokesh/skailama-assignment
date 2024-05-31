@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Button from "../../UI/Button/Button";
 import HomePageSVG from "../../svgs/HomePageSVG";
 import styles from "../../styles/Homepage.module.css";
+import Dialog from "../../UI/Dialog";
 
 const HomePage = () => {
   const dialogRef = useRef(null);
@@ -25,7 +26,7 @@ const HomePage = () => {
         commodo consequat. Duis aute irure dolor in reprehenderit in
       </p>
       <Button text={"Create New Project"} openDialog={handleOpenDialog} />
-      <dialog ref={dialogRef}>
+      <Dialog ref={dialogRef}>
         <h2>Create Project</h2>
         <label htmlFor="project-name">Enter Project Name:</label>
         <input type="text" id="project-name" placeholder="Type here" />
@@ -37,7 +38,7 @@ const HomePage = () => {
             Create
           </button>
         </div>
-      </dialog>
+      </Dialog>
     </div>
   );
 };
