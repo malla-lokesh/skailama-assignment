@@ -1,6 +1,6 @@
 .homepageSection {
   font-family: Roboto;
-  height: 90%;
+  height: 90vh;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -13,14 +13,14 @@
 .homepageTitle {
   color: #7e22ce;
   font-weight: 700;
-  font-size: 73.41px;
+  font-size: 4rem;
   line-height: 86.03px;
 }
 
 .homepageDescription {
   color: #838383;
   font-weight: 400;
-  font-size: 35px;
+  font-size: 1.5rem;
   line-height: 41.02px;
   text-align: center;
 }

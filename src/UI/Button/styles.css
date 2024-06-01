@@ -5,12 +5,27 @@
 .btn {
   font-family: Roboto;
   font-weight: 600;
-  font-size: 46.28px;
+  font-size: 2rem;
   line-height: 54.23px;
   background-color: #211935;
   color: #f8f8f8;
-  width: 569.83px;
-  height: 109.92px;
+  width: 425px;
+  height: 80px;
+  border-radius: 12.89px;
+  border: none;
+  cursor: pointer;
+  padding-left: 2rem;
+}
+
+.projects-btn {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 54.23px;
+  background-color: #211935;
+  color: #f8f8f8;
+  width: 325px;
+  height: 65px;
   border-radius: 12.89px;
   border: none;
   cursor: pointer;
