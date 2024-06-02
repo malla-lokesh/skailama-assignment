@@ -1,8 +1,8 @@
 const Home = () => {
   return (
     <svg
-      width="40"
-      height="40"
+      width="25"
+      height="25"
       viewBox="0 0 52 52"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

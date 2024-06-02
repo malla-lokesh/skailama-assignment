@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import VerticalNavbar from "./components/VerticalNavbar";
+import Dialog from "./UI/Dialog";
+import styles from "./styles/Homepage.module.css";
 
 function App() {
   const location = useLocation();
   const isUploadsPage = location?.pathname === "/uploads";
   const isSettingsPage = location?.pathname === "/settings";
+  const dialogRef = useRef(null);
+  const isLoggedIn = localStorage.getItem("email");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (isLoggedIn === null) {
+      if (dialogRef.current) dialogRef.current.showModal();
+    }
+  }, []);
+
+  const handleEmailSubmit = () => {
+    if (dialogRef.current) dialogRef.current.close();
+  };
 
   return (
     <React.Fragment>
+      {isLoggedIn === null ? (
+        <Dialog ref={dialogRef}>
+          <h2>Login</h2>
+          <label htmlFor="email">Enter email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="youremail@something.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <div className={styles.btnGroup}>
+            <button className={styles.createBtn} onClick={handleEmailSubmit}>
+              Create
+            </button>
+          </div>
+        </Dialog>
+      ) : null}
       {isUploadsPage || isSettingsPage ? (
         <div className="verticalNavbarFlow">
           <VerticalNavbar />
