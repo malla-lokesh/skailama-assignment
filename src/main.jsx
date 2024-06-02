@@ -7,11 +7,13 @@ import HomePage from "./components/HomePage";
 import Projects from "./components/Projects";
 import Uploads from "./components/Uploads";
 import Settings from "./components/Settings";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
