@@ -11,7 +11,9 @@ const Projects = () => {
         <Button text={"Create New Project"} />
       </div>
       <div className={styles.projectsGrid}>
-        <ProjectCard />
+        <Link to={"/uplaods"}>
+          <ProjectCard />
+        </Link>
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />
