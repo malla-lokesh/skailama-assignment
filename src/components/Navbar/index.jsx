@@ -1,15 +1,12 @@
-import CompanyLogo from "../../svgs/CompanyLogo";
 import Settings from "../../svgs/Settings";
 import Notifications from "../../svgs/Notifications";
 import styles from "../../styles/Navbar.module.css";
+import Lama from "../Lama";
 
 const Navbar = () => {
   return (
     <nav>
-      <div className={styles.logoSection}>
-        <CompanyLogo />
-        <div className={styles.companyName}>LAMA.</div>
-      </div>
+      <Lama />
       <div className={styles.actionsSection}>
         <Settings />
         <Notifications />
