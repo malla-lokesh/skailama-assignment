@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Projects from "./components/Projects";
 import Uploads from "./components/Uploads";
+import Settings from "./components/Settings";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,12 @@ const router = createBrowserRouter([
         element: <Projects />,
       },
       {
-        path: "/uplaods",
+        path: "/uploads",
         element: <Uploads />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
       },
     ],
   },

@@ -1,31 +1,19 @@
-.uploadsNavbar {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  height: 100vh;
-  padding: 2rem 3rem;
-  background-color: #f3e8ff;
+.uploadsOutlet {
+  width: 100%;
+  overflow: scroll;
 }
 
-.sections {
-  display: flex;
-  flex-direction: column;
+.uploadTitle {
+  font-size: 2rem;
+  color: #7e22ec;
+  font-weight: 700;
+  margin: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.uploadGrid {
+  display: grid;
+  margin: 0 2rem;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-}
-
-.horizontalLine {
-  border: 0;
-  height: 2px;
-  background: #cac4d0;
-}
-
-.setting {
-  display: flex;
-  align-items: center;
-  margin-top: 0.75rem;
-  gap: 0.5rem;
-}
-
-.settingsText {
-  color: #49454f;
 }

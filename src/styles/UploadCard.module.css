@@ -1,0 +1,9 @@
+.uploadCard {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}

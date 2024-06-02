@@ -1,0 +1,29 @@
+.uploadsNavbar {
+  display: flex;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.uploadsNavListItem {
+  display: flex;
+  align-items: center;
+}
+
+.uploadsUnorderedList {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+.navText {
+  color: #999;
+  font-size: 1rem;
+}
+
+.routeText {
+  font-weight: 500;
+  color: #7e22ce;
+}
