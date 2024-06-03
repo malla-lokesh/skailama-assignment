@@ -3,6 +3,8 @@ import BreadCrumb from "../BreadCrumb";
 import img from "../../../public/img.png";
 
 const Settings = () => {
+  const email = localStorage.getItem("email") || "";
+
   return (
     <div className={styles.settingsOutlet}>
       <BreadCrumb route={"Account Settings"} />
@@ -23,7 +25,13 @@ const Settings = () => {
           <label htmlFor="Email" className={styles.emailLabel}>
             Email
           </label>
-          <input type="email" id="Email" className={styles.email} />
+          <input
+            type="email"
+            id="Email"
+            className={styles.email}
+            value={email}
+            disabled
+          />
         </div>
       </div>
       <div className={styles.subscriptionsTitle}>Subscriptions</div>

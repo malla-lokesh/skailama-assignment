@@ -50,6 +50,10 @@
   border: 1px solid #999;
 }
 
+.email:hover {
+  cursor: not-allowed;
+}
+
 .subscriptionBanner {
   margin: 1rem 2rem;
   background: linear-gradient(to right, #7e22ce, #460281);
