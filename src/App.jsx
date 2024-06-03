@@ -14,7 +14,6 @@ function App() {
   const isLoggedIn = localStorage.getItem("email");
   const [email, setEmail] = useState("");
   const [loginError, setLoginError] = useState("");
-  const disableEmailSubmitBtn = useRef(false);
 
   useEffect(() => {
     if (isLoggedIn === null) {
@@ -23,7 +22,6 @@ function App() {
   }, []);
 
   const handleEmailSubmit = async () => {
-    disableEmailSubmitBtn.current = true;
     try {
       const response = await fetch("http://localhost:5050/api/check-email", {
         method: "POST",
@@ -60,11 +58,7 @@ function App() {
           />
           {loginError ? <p>{loginError}</p> : null}
           <div className={styles.btnGroup}>
-            <button
-              className={styles.createBtn}
-              onClick={handleEmailSubmit}
-              disabled={disableEmailSubmitBtn}
-            >
+            <button className={styles.createBtn} onClick={handleEmailSubmit}>
               Create
             </button>
           </div>
