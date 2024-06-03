@@ -59,7 +59,7 @@ function App() {
           {loginError ? <p>{loginError}</p> : null}
           <div className={styles.btnGroup}>
             <button className={styles.createBtn} onClick={handleEmailSubmit}>
-              Create
+              Login
             </button>
           </div>
         </Dialog>
