@@ -13,6 +13,7 @@ function App() {
   const dialogRef = useRef(null);
   const isLoggedIn = localStorage.getItem("email");
   const [email, setEmail] = useState("");
+  const disableEmailSubmitBtn = useRef(false);
 
   useEffect(() => {
     if (isLoggedIn === null) {
@@ -20,8 +21,27 @@ function App() {
     }
   }, []);
 
-  const handleEmailSubmit = () => {
-    if (dialogRef.current) dialogRef.current.close();
+  const handleEmailSubmit = async () => {
+    disableEmailSubmitBtn.current = true;
+    // if (dialogRef.current) dialogRef.current.close();
+    try {
+      const response = await fetch("http://localhost:5050/api/check-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      localStorage.setItem("email", email);
+      if (data.exists) {
+        navigate("/projects", { state: { projects: data.projects } });
+      } else {
+        navigate("/homepage");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -38,7 +58,11 @@ function App() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className={styles.btnGroup}>
-            <button className={styles.createBtn} onClick={handleEmailSubmit}>
+            <button
+              className={styles.createBtn}
+              onClick={handleEmailSubmit}
+              disabled={disableEmailSubmitBtn}
+            >
               Create
             </button>
           </div>
