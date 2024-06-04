@@ -22,3 +22,28 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem 2rem;
 }
+
+.btnGroup {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  color: red;
+  border: none;
+  background: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.createBtn {
+  background-color: #7e22ce;
+  color: white;
+  border: none;
+  font-size: 15px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}

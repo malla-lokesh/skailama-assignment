@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import VerticalNavbar from "./components/VerticalNavbar";
 import Dialog from "./UI/Dialog";
 import styles from "./styles/Homepage.module.css";
@@ -14,6 +14,8 @@ function App() {
   const isLoggedIn = localStorage.getItem("email");
   const [email, setEmail] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isLoggedIn === null) {
@@ -22,24 +24,32 @@ function App() {
   }, []);
 
   const handleEmailSubmit = async () => {
+    setIsLoggingIn(true);
     try {
-      const response = await fetch("http://localhost:5050/api/check-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://skailama-assignment-backend.onrender.com/api/check-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       const data = await response.json();
+      console.log(data);
+      console.log(data?.user?.projects?.length > 0);
       localStorage.setItem("email", email);
-      if (data.exists) {
-        navigate("/projects", { state: { projects: data.projects } });
+      alert("successfully logged in");
+      if (data?.user?.projects?.length > 0) {
+        navigate("/projects", { state: { projects: data.user.projects } });
       } else {
-        navigate("/homepage");
+        navigate("/");
       }
     } catch (error) {
       setLoginError("Error:", error);
     }
+    setIsLoggingIn(false);
     if (dialogRef.current) dialogRef.current.close();
   };
 
@@ -58,7 +68,11 @@ function App() {
           />
           {loginError ? <p>{loginError}</p> : null}
           <div className={styles.btnGroup}>
-            <button className={styles.createBtn} onClick={handleEmailSubmit}>
+            <button
+              className={styles.createBtn}
+              onClick={handleEmailSubmit}
+              disabled={isLoggingIn}
+            >
               Login
             </button>
           </div>

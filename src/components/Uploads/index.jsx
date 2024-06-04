@@ -16,6 +16,10 @@ const Uploads = () => {
         <UploadCard svg={<Spotify />} uploadSource={"Spotify Podcast"} />
         <UploadCard svg={<RSS />} uploadSource={"RSS Feed"} />
       </div>
+      <div>
+        Files{" "}
+        {/** Fetch the files of the associated projects of the user display them and add option to edit and delete the files and write logic for it. */}
+      </div>
     </div>
   );
 };
