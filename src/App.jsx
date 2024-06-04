@@ -40,6 +40,7 @@ function App() {
       console.log(data);
       console.log(data?.user?.projects?.length > 0);
       localStorage.setItem("email", email);
+      localStorage.setItem("user", data.userId);
       alert("successfully logged in");
       if (data?.user?.projects?.length > 0) {
         navigate("/projects", { state: { projects: data.user.projects } });
