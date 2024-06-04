@@ -6,4 +6,30 @@
   align-items: center;
   gap: 1rem;
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.titleInput {
+  margin-bottom: 0.75rem;
+}
+
+.cancelBtn {
+  color: red;
+  text-decoration: underline;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.saveBtn {
+  background-color: #7e22ec;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
 }
