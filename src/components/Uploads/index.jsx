@@ -5,8 +5,12 @@ import UploadCard from "./UploadCard";
 import YT from "../../svgs/YT";
 import Spotify from "../../svgs/Spotify";
 import RSS from "../../svgs/RSS";
+import { useLocation } from "react-router-dom";
 
 const Uploads = () => {
+  const { state } = useLocation();
+  console.log(state.project.files[1]);
+
   return (
     <div className={styles.uploadsOutlet}>
       <BreadCrumb route={"Upload"} />
@@ -17,8 +21,15 @@ const Uploads = () => {
         <UploadCard svg={<RSS />} uploadSource={"RSS Feed"} />
       </div>
       <div>
-        Files{" "}
-        {/** Fetch the files of the associated projects of the user display them and add option to edit and delete the files and write logic for it. */}
+        {state?.project?.files?.map((file) => {
+          console.log(file);
+          return (
+            <div key={file.fileId}>
+              <div>{file?.title}</div>
+              <div>{file?.description}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

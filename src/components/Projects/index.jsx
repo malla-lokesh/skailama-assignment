@@ -1,14 +1,16 @@
 import Button from "../../UI/Button/Button";
 import styles from "../../styles/Projects.module.css";
 import ProjectCard from "./ProjectCard";
-import { Link, useLocation } from "react-router-dom";
-import { useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 import Dialog from "../../UI/Dialog";
 
 const Projects = () => {
   const location = useLocation();
   const { projects } = location?.state || {};
   console.log(projects);
+  const [projectName, setProjectName] = useState("");
+  const navigate = useNavigate();
 
   const dialogRef = useRef(null);
 
@@ -20,8 +22,16 @@ const Projects = () => {
     if (dialogRef.current) dialogRef.current.close();
   };
 
-  const handleCreateProjectDialog = () => {
+  const handleCreateProjectDialog = async () => {
     // write logic to create project
+    try {
+      const response = await fetch(
+        "https://skailama-assignment-backend.onrender.com/api/projects"
+      );
+      if (response.ok) {
+        navigate("/projects");
+      }
+    } catch (error) {}
   };
 
   return (
@@ -33,7 +43,14 @@ const Projects = () => {
       <Dialog ref={dialogRef}>
         <h2>Create Project</h2>
         <label htmlFor="project-name">Enter Project Name:</label>
-        <input type="text" id="project-name" placeholder="Type here" />
+        <input
+          type="text"
+          id="project-name"
+          placeholder="Type here"
+          value={projectName}
+          onChange={(e) => setProjectName(e.target.value)}
+          required
+        />
         <div className={styles.btnGroup}>
           <button className={styles.cancelBtn} onClick={handleCloseDialog}>
             Cancel
@@ -48,9 +65,8 @@ const Projects = () => {
       </Dialog>
       <div className={styles.projectsGrid}>
         {projects?.map((project) => {
-          console.log(project);
           return (
-            <Link to={"/uploads"} key={project.projectId}>
+            <Link to={"/uploads"} state={{ project }} key={project.projectId}>
               <ProjectCard project={project} />
             </Link>
           );
